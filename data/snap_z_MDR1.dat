@@ -1,0 +1,50 @@
+#OK
+#SQL= select distinct b.snapnum, r.zred from MDR1..BDMW b, MDR1..redshifts r 
+#	where b.snapnum = r.snapnum 
+#	order by 1
+#MAXROWS UNLIMITED
+#QUERYTIMEOUT 1400 sec
+#DATE 2013-02-22 15:18:13.948 CET
+#QUERYTIME 80139 millisec
+#COLUMN 1 name=snapnum JDBC_TYPE=5 JDBC_TYPENAME=smallint
+#COLUMN 2 name=zred JDBC_TYPE=8 JDBC_TYPENAME=float
+snapnum,zred
+30,4.68
+32,4.1
+34,3.41
+36,2.89
+38,2.48
+40,2.15
+42,1.87
+44,1.64
+46,1.45
+48,1.28
+50,1.13
+52,1.0
+54,0.89
+56,0.78
+58,0.69
+60,0.61
+62,0.53
+64,0.47
+66,0.4
+67,0.37
+68,0.35
+69,0.32
+70,0.29
+71,0.27
+72,0.24
+73,0.22
+74,0.2
+75,0.18
+76,0.16
+77,0.14
+78,0.12
+79,0.1
+80,0.08
+81,0.06
+82,0.05
+83,0.03
+84,0.01
+85,0.0
+#OK
