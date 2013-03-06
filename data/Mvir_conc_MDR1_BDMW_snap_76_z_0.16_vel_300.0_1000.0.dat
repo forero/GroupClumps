@@ -1,4 +1,5 @@
-#log_min_mass log_max_maxx mean_conc std_conc12.500 12.600 8.095 2.323
+#log_min_mass log_max_mass mean_conc std_conc
+12.500 12.600 8.095 2.323
 12.600 12.700 6.986 1.876
 12.700 12.800 6.390 1.871
 12.800 12.900 6.231 1.824
