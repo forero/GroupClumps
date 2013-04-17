@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{natbib}
+\newcommand{\apj}{ApJ}  
+\newcommand{\apjs}{ApJS}  
+\newcommand{\apjl}{ApJL}  
+\newcommand{\aj}{AJ}  
+\newcommand{\mnras}{MNRAS}  
+\newcommand{\mnrassub}{MNRAS accepted}  
+\newcommand{\aap}{A\&A}  
+\newcommand{\aaps}{A\&AS}  
+\newcommand{\araa}{ARA\&A}  
+\newcommand{\nat}{Nature}  
+\newcommand{\physrep}{PhR}
+\newcommand{\pasp}{PASP}    
+\newcommand{\pasj}{PASJ}    
+\newcommand{\hMpc}{{\ifmmode{h^{-1}{\rm Mpc}}\else{$h^{-1}$Mpc }\fi}}  
+\newcommand{\hMpc}{{\ifmmode{h^{-1}{\rm kpc}}\else{$h^{-1}$kpc }\fi}}  
+\title{Simulation Description}
+\author{Jaime E. Forero-Romero\\ Departamento de F\'{i}sica, Universidad de los Andes\\ Cra. 1 No. 18A-10, Edificio Ip, Bogot\'a, Colombia}
+
+
+
+\begin{document}
+\maketitle
+We have used the data from a large N-body cosmological simulation
+dubbed \verb"Multidark". The data is available to the public through a
+database interface first presented by \cite{Riebe11}. 
+
+Here we summarize the main characteristics in the simulations. More
+details can be found in \cite{Prada12}. The simulation was run using
+an Adaptive-Mesh Refinement (AMR) code called ART. Details about the
+technical aspects and comparisons with other N-body codes are given in
+\cite{Klypin09}.   
+
+The simulations follows the non-linear evolution of a dark matter
+density field sampled with $2048^3$ particles in a volume of
+$1000$\hMpc. The physical resolution of the simulation is almost
+constant in time $\sim 7$\hkpc between redshifts $z=0-8$. The
+cosmological parameters in the simulation are $\Omega_m=0.27$,
+$\Omega_{\Lambda}=0.73$, $n_{s}=0.95$, $h=0.70$ and $\sigma_8=0.82$ for
+the matter density, dark energy density, slope of the matter
+fluctuations, the Hubble constant at $z=0$ in units of 100km s$^{-1}$
+Mpc$^{-1}$ and the normalization of the power spectrum, respectively. 
+With these characteristics the mass per simulation particle is
+$m_p=8.63\times 10^{9}$\hMsun, which means that group-like halos of masses
+$\sim 10^{13}$\hMsun are sampled with at least 1100 particles. 
+
+Dark matter halos are identifyed using a Bound-Density-Maxima
+algorithm (BDM). The code finds density maxima in spherical
+regions. For each maxima the code estimates the radius that encloses
+an specified value for the density
+
+The halos we have used take define the spherical regions that enclose
+within a radius $R_{200}$ an average density $\Delta=200$ times larger than the
+critical density of the Universe, $\rho_{\rm cr}$. This allows the
+code to relate the radius $R_{200}$ and the enclosed mass $M_{200}$ as
+follows: 
+
+\begin{equation}
+M_{200} = \frac{4\pi}{3}\Delta \rho_{\rm cr}(z)R^{3}
+\end{equation}
+
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+
+\end{document}
