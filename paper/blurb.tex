@@ -17,6 +17,7 @@
 \newcommand{\Msun}{{\ifmmode{{\rm {M_{\odot}}}}\else{${\rm{M_{\odot}}}$}\fi}} 
 \newcommand{\hMpc}{{\ifmmode{h^{-1}{\rm Mpc}}\else{$h^{-1}$Mpc }\fi}}  
 \newcommand{\hkpc}{{\ifmmode{h^{-1}{\rm kpc}}\else{$h^{-1}$kpc }\fi}}  
+\newcommand{\kms}{\,km~s$^{-1}$}
 \title{Simulation Description}
 \author{Jaime E. Forero-Romero\\ Departamento de F\'{i}sica, Universidad de los Andes\\ Cra. 1 No. 18A-10, Edificio Ip, Bogot\'a, Colombia}
 
@@ -100,6 +101,50 @@ dependent on the radial range used for the fit
 using halos where the NFW functional fit is robust yield a small
 systematic offset of $(5-15)\%$, with the concentration  derived by
 the velocity ratio method being higher \citep{Prada12}. 
+
+\subsection{Halo Sample Selection}
+
+We have used the observational data to define $10$ redshift bins
+as defined in Table 1.
+
+We query the MultiDark database to obtain all the information for
+halos with rms velocities in the range $300$\kms$<V_{\rm
+  rms}<1000$\kms. We use the values for $V_{\rm rms}$ as a proxy for
+the velocity dispersion inferred in observed lenses. For each redshift
+we construct a relationship $V_{\rm rms}-c$ by binning the halos in
+the catalog in bins of $50$\kms width. For each velocity bin the
+average and standar deviation of the concentration is calculated. 
+
+Additionally we construct a new halo catalog using halos from all the
+mock catalogs as to match the shape of the observational redshift
+distribution for the lenses. We proceed as follows, for each redshift
+bin we count the number of observed lenses and multiply that number by
+$10^5$, then we randomly select as many halos from the catalogs. This
+allows us to have a simulated sample $10^5$ times larger as the
+observational one, with the same redshift distribution. From this new
+catalog we construct a new $V_{\rm rms}-c$ relationship in the same
+way as described in the last paragraph.
+
+\begin{table}
+\begin{tabular}{ccc}
+center & Simulation & Total Number \\
+redshift bin & Snapshot & Number of Halos\\
+0.05 & 82 & 781764\\
+0.16 & 76 & 816422\\
+0.28 & 70 & 854495\\
+0.40 & 66 & 869768\\
+0.52 & 62 & 901588\\
+0.64 & 60 & 909205\\
+0.75 & 56 & 920882\\
+0.87 & 54 & 923512\\
+0.99 & 52 & 904938\\
+1.10 & 50 & 898774\\
+\end{tabular}
+\caption{First column, center redshift bins used to query the MultiDark data
+  base. Second column, corresponding snapshot number in the
+  simulation. Third column, number of halos in the whole volume box
+  with RMS velocities in the range $300$\kms-$1000$\kms.}
+\end{table}
 
 
 
