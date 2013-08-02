@@ -25,49 +25,57 @@
 
 \begin{document}
 \maketitle
-\section{Simulation Description}
-We have used the data from a large N-body cosmological simulation
-dubbed \verb"Multidark". The data is available to the public through a
-database interface first presented by \cite{Riebe11}. 
 
-Here we summarize the main characteristics in the simulations. More
-details can be found in \cite{Prada12}. The simulation was run using
-an Adaptive-Mesh Refinement (AMR) code called ART. Details about the
-technical aspects and comparisons with other N-body codes are given in
-\cite{Klypin09}.   
 
-The simulations follows the non-linear evolution of a dark matter
-density field sampled with $2048^3$ particles in a volume of
-$1000$\hMpc. The physical resolution of the simulation is almost
-constant in time $\sim 7$\hkpc between redshifts $z=0-8$. The
-cosmological parameters in the simulation are $\Omega_m=0.27$,
-$\Omega_{\Lambda}=0.73$, $n_{s}=0.95$, $h=0.70$ and $\sigma_8=0.82$ for
-the matter density, dark energy density, slope of the matter
-fluctuations, the Hubble constant at $z=0$ in units of 100km s$^{-1}$
-Mpc$^{-1}$ and the normalization of the power spectrum, respectively. 
-With these characteristics the mass per simulation particle is
-$m_p=8.63\times 10^{9}$\hMsun, which means that group-like halos of masses
-$\sim 10^{13}$\hMsun are sampled with at least 1100 particles. 
 
-Dark matter halos are identifyed using a Bound-Density-Maxima
-algorithm (BDM). The code finds density maxima in spherical
-regions. For each maxima the code estimates the radius that encloses
-an specified value for the density
 
-The halos we have used take define the spherical regions that enclose
-within a radius $R_{200}$ an average density $\Delta=200$ times larger than the
-critical density of the Universe, $\rho_{\rm cr}$. This allows the
-code to relate the radius $R_{200}$ and the enclosed mass $M_{200}$ as
-follows: 
+   
+\section{Simulations}\label{Simulations}
 
-\begin{equation}
-M_{200} = \frac{4\pi}{3}\Delta \rho_{\rm cr}(z)R^{3}
+We used a large N-body simulation dubbed \verb"Multidark"
+to extract statistics of halo parameters on cosmological scales. The
+data we use for this paper is publicly available through a database
+interface first presented by \cite{Riebe11}. Here we summarize the
+main characteristics of the \verb"Multidark" volume. More details can
+be found in \cite{Prada12}.  
+
+The simulation was run using  an Adaptive-Mesh Refinement (AMR) code
+called ART. Details about the technical aspects and comparisons with
+other N-body codes are given in \cite{Klypin09}.   The simulations
+follows the non-linear evolution of a dark matter density field
+sampled with $2048^3$ particles in a volume of $1000$\hMpc. The
+physical resolution of the simulation is almost constant in time $\sim
+7$\hkpc between redshifts $z=0-8$. The cosmological parameters in the
+simulation are $\Omega_m=0.27$, $\Omega_{\Lambda}=0.73$, $n_{s}=0.95$,
+$h=0.70$ and $\sigma_8=0.82$ for the matter density, dark energy
+density, slope of the matter fluctuations, the Hubble constant at
+$z=0$ in units of 100km s$^{-1}$ Mpc$^{-1}$ and the normalization of
+the power spectrum, respectively.  These cosmological parameters are
+consistent with the results from WMAP5 and WMAP7
+\citep{Komatsu2009,Jarosik2011}. With these characteristics the mass
+per simulation particle is $m_p=8.63\times  10^{9}$\hMsun, which means
+that group-like halos of masses $\sim 10^{13}$\hMsun are sampled with
+at least 1100 particles.   
+
+Dark matter halos are identified using a Bound-Density-Maxima
+algorithm (BDM). The code starts by finding the density maxima at the
+particles' positions in the simulation volume. For each maxima
+it finds the radius $R_{200}$ of a sphere containing a mass
+overdensity given by 
+
+\begin{equation}\label{eq:M200}
+M_{200} = \frac{4\pi}{3}\Delta \rho_{\rm cr}(z)R_{200}^{3}
 \end{equation}
+
+where $\rho_{\rm cr}$ is the critical density of the Universe and
+$\Delta=200$ is the desired overdensity. This procedure allows for the
+detection of both halos and sub-halos. In our analysis we kept only
+the halos. 
 
 \subsection{Concentration Estimates}
 
 The estimation for the concentration values is done using an
-analytical property of the NFW profile that relates the circcular
+analytical property of the NFW profile (see Sect.\,\ref{SL_Ana}) that relates the circular
 velocity at the virial radius:
 \begin{equation}
 V_{200} = \left(\frac{GM_{200}}{R_{200}}\right)^{1/2},
@@ -79,7 +87,8 @@ V_{\rm max}^{2} = {\rm max}\left[\frac{GM(<r)}{r}\right].
 
 
 The $V_{\rm max}/V_{200}$ velocity ratio is used to determine the halo
-concentration, $c$, by using the following relation \citep{Bolshoi}:
+concentration, $c$ (the ratio between $R_{200}$ and the scale radii of
+the NFW profile), using the following relation \citep{Bolshoi}:
 
 \begin{equation}
 \frac{V_{\rm max}}{V_{200}} = \left(\frac{0.216 c}{c}\right)^{1/2}
@@ -92,61 +101,13 @@ f(x) = \ln(1+c) - \frac{c}{(1+c)}.
 
 For each BDM overdensity the $V_{\rm max}/V_{200}$ ratio in order to
 find the concentration $c$ by solving numerically the previous two
-equations. 
-
-This method provides a much robust estimate of the concentration
-compared to a radial fitting to the NFW profile which is strongly
+equations.  This method provides a robust estimate of the concentration
+compared to a radial fitting to the NFW profile, which is strongly
 dependent on the radial range used for the fit
 \citep{Bolshoi,Meneghetti13}. Comparison of these two methods to
-using halos where the NFW functional fit is robust yield a small
-systematic offset of $(5-15)\%$, with the concentration  derived by
-the velocity ratio method being higher \citep{Prada12}. 
-
-\subsection{Halo Sample Selection}
-
-We have used the observational data to define $10$ redshift bins
-as defined in Table 1.
-
-We query the MultiDark database to obtain all the information for
-halos with rms velocities in the range $300$\kms$<V_{\rm
-  rms}<1000$\kms. We use the values for $V_{\rm rms}$ as a proxy for
-the velocity dispersion inferred in observed lenses. For each redshift
-we construct a relationship $V_{\rm rms}-c$ by binning the halos in
-the catalog in bins of $50$\kms width. For each velocity bin the
-average and standar deviation of the concentration is calculated. 
-
-Additionally we construct a new halo catalog using halos from all the
-mock catalogs as to match the shape of the observational redshift
-distribution for the lenses. We proceed as follows, for each redshift
-bin we count the number of observed lenses and multiply that number by
-$10^5$, then we randomly select as many halos from the catalogs. This
-allows us to have a simulated sample $10^5$ times larger as the
-observational one, with the same redshift distribution. From this new
-catalog we construct a new $V_{\rm rms}-c$ relationship in the same
-way as described in the last paragraph.
-
-\begin{table}
-\begin{tabular}{ccc}
-center & Simulation & Total Number \\
-redshift bin & Snapshot & Number of Halos\\
-0.05 & 82 & 781764\\
-0.16 & 76 & 816422\\
-0.28 & 70 & 854495\\
-0.40 & 66 & 869768\\
-0.52 & 62 & 901588\\
-0.64 & 60 & 909205\\
-0.75 & 56 & 920882\\
-0.87 & 54 & 923512\\
-0.99 & 52 & 904938\\
-1.10 & 50 & 898774\\
-\end{tabular}
-\caption{First column, center redshift bins used to query the MultiDark data
-  base. Second column, corresponding snapshot number in the
-  simulation. Third column, number of halos in the whole volume box
-  with RMS velocities in the range $300$\kms-$1000$\kms.}
-\end{table}
-
-
+using halos where the NFW functional fit yield a small systematic
+offset of $(5-15)\%$, with the concentration  derived by the velocity
+ratio method being higher \citep{Prada12}.  
 
 \bibliographystyle{abbrvnat}
 \bibliography{references}
